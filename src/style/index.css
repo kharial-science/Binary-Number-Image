@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#App {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+      grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+  -ms-grid-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+      grid-template-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+}
+
+header {
+  grid-column: middle-start / middle-end;
+}
+
+#Input {
+  width: 80vh;
+  height: 100px;
+  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+  grid-column: middle-start / middle-end;
+  grid-row: input-start / input-end;
+}
+
+#Display {
+  margin: 0 auto 0 0;
+  max-width: 80vh;
+  height: auto;
+  grid-column: middle-start / middle-end;
+  grid-row: display-start / display-end;
+  background-color: #5c5c5c;
+  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#Square {
+  height: 5vh;
+  width: 5vh;
+}
+
+#Square.color0 {
+  background-color: black;
+}
+
+#Square.color1 {
+  background-color: white;
+}
+/*# sourceMappingURL=index.css.map */

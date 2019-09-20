@@ -1,0 +1,48 @@
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#App {
+    display: grid;
+    grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+    grid-template-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+}
+
+header {
+    grid-column: middle-start / middle-end;
+}
+
+#Input {
+    width: 80vh;
+    height: 100px;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    grid-column: middle-start / middle-end;
+    grid-row: input-start / input-end;
+}
+
+#Display {
+    margin: 0 auto 0 0;
+    max-width: 80vh;
+    height: auto;
+    grid-column: middle-start / middle-end;
+    grid-row: display-start / display-end;
+    background-color: rgb(92, 92, 92);
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#Square {
+    height: 5vh;
+    width: 5vh;
+
+    &.color0 {
+        background-color: black;
+    }
+
+    &.color1 {
+        background-color: white;
+    }
+}
