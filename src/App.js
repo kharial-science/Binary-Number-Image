@@ -99,7 +99,7 @@ class App extends Component {
 
   handleRemoveLineClick() {
 
-    // generating 16 0s in the binNumber in state and regenerating squareArray to create a new black line of squares
+    // deleting 16 first digits of binNumber and actualizing squareArray and decNumber
     this.setState({
       binNumber: this.state.binNumber.substr(16, this.state.binNumber.length),
     }, () => {
