@@ -19,6 +19,7 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSquareClick = this.handleSquareClick.bind(this)
     this.handleAddLineClick = this.handleAddLineClick.bind(this)
+    this.handleRemoveLineClick = this.handleRemoveLineClick.bind(this)
   }
 
   handleRenderClick() {
@@ -96,6 +97,26 @@ class App extends Component {
 
   }
 
+  handleRemoveLineClick() {
+
+    // generating 16 0s in the binNumber in state and regenerating squareArray to create a new black line of squares
+    this.setState({
+      binNumber: this.state.binNumber.substr(16, this.state.binNumber.length),
+    }, () => {
+      this.state.squareArray = []
+      let key = 0
+      for (const i of this.state.binNumber) {
+        this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
+        key++
+      }
+      let decNumber = BigInt('0b' + this.state.binNumber).toString(10)
+      this.setState({
+        decNumber: decNumber
+      }) // refresh
+    })
+
+  }
+
   render() {
 
     return (
@@ -109,6 +130,7 @@ class App extends Component {
           value={this.state.decNumber} 
           handleInputChange={this.handleInputChange}
           handleAddLineClick={this.handleAddLineClick}
+          handleRemoveLineClick={this.handleRemoveLineClick}
         />
         <div id="Display">
           {this.state.squareArray ? this.state.squareArray : <div></div>}

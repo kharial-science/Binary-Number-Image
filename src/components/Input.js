@@ -13,6 +13,9 @@ class Input extends Component {
               onChange={this.props.handleInputChange}
             ></input>
           </div>
+          <button className="removeline" onClick={this.props.handleRemoveLineClick}>
+            -
+          </button>
           <button className="addline" onClick={this.props.handleAddLineClick}>
             +
           </button>

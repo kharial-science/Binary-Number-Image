@@ -51,6 +51,11 @@ header {
 
 #Input button.addline {
   width: 6.25%;
+  background-color: lightgreen;
+}
+
+#Input button.removeline {
+  width: 6.25%;
   background-color: lightpink;
 }
 
@@ -60,7 +65,7 @@ header {
 }
 
 #Input .input-container {
-  width: 75%;
+  width: 68.75%;
 }
 
 #Input .input-container input {

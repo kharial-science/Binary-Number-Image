@@ -43,6 +43,11 @@ header {
 
         &.addline {
             width: 6.25%;
+            background-color: lightgreen;
+        }
+
+        &.removeline {
+            width: 6.25%;
             background-color: lightpink;
         }
 
@@ -55,7 +60,7 @@ header {
 
     .input-container {
 
-        width: 75%;
+        width: 68.75%;
 
         input {
             padding: 0 20px;
