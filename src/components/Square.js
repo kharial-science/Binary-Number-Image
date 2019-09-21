@@ -7,7 +7,12 @@ class Square extends Component {
 
     render() {
         return (
-            <div id="Square" className={`color${this.props.color}`}>
+            <div 
+                id="Square" 
+                className={`color${this.props.color}`} 
+                onClick={() => {
+                    this.props.onClick(this.props.identifier)
+                }}>
                 {this.props.number}
             </div>
         )

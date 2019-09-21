@@ -4,14 +4,24 @@ class Input extends Component {
   render() {
     return (
       <div id="Input">
-          <input id="numberInput" type="number" placeholder="Entrez ici le nombre à convertir en binaire"></input>
-          <button onClick={this.props.handleRenderClick}>
+          <div className="input-container">
+            <input 
+              id="numberInput" 
+              type="text" 
+              placeholder="Entrez ici le nombre à convertir en binaire" 
+              value={this.props.value}
+              onChange={this.props.handleInputChange}
+            ></input>
+          </div>
+          <button className="addline" onClick={this.props.handleAddLineClick}>
+            +
+          </button>
+          <button className="render" onClick={this.props.handleRenderClick}>
             render
           </button>
       </div>
     )
   }
-  
 }
 
 export default Input;

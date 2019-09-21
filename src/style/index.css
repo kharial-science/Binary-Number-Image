@@ -19,10 +19,58 @@ header {
 #Input {
   width: 80vh;
   height: 100px;
-  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
   grid-column: middle-start / middle-end;
   grid-row: input-start / input-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+}
+
+#Input button {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 2.5vh;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #fff;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+#Input button:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+#Input button.addline {
+  width: 6.25%;
+  background-color: lightpink;
+}
+
+#Input button.render {
+  width: 18.75%;
+  background-color: lightblue;
+}
+
+#Input .input-container {
+  width: 75%;
+}
+
+#Input .input-container input {
+  padding: 0 20px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 #Display {
@@ -39,11 +87,17 @@ header {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 #Square {
   height: 5vh;
   width: 5vh;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+  cursor: pointer;
 }
 
 #Square.color0 {
@@ -52,5 +106,10 @@ header {
 
 #Square.color1 {
   background-color: white;
+}
+
+#Square:hover {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 /*# sourceMappingURL=index.css.map */
