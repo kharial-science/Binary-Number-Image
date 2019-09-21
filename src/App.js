@@ -68,7 +68,7 @@ class App extends Component {
     })
 
     // changing binNumber in state as well, switching corresponding 0 to 1 or vice versa + changing corresponding decNumber in input
-    let binNumber = this.state.number
+    let binNumber = this.state.binNumber
     binNumber = binNumber.substr(0, i) + (binNumber[i] === "1" ? "0" : "1") + binNumber.substr(i + 1);
     let decNumber = BigInt('0b' + binNumber).toString(10)
     this.setState({
