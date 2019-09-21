@@ -12,7 +12,7 @@ class App extends Component {
     super()
     this.state = {
       decNumber: undefined,
-      number: null,
+      binNumber: null,
       squareArray: []
     }
     this.handleRenderClick = this.handleRenderClick.bind(this)
@@ -23,18 +23,22 @@ class App extends Component {
 
   handleRenderClick() {
 
+    // retrieving bin number from input
     let binNumber = BigInt(document.getElementById('numberInput').value).toString(2)
+
+    // adding 0s to fill the lines
     let binNumberLength = new Number(binNumber.length)
     for (let i = 0; i < 16 - binNumberLength % 16; i++) {
       binNumber = '0' + binNumber
     }
 
+    // setting binNumber in state after retrieving and generating corresponding squareArray to display
     this.setState({ 
-      number: binNumber
+      binNumber: binNumber
     }, () => {
       this.state.squareArray = []
       let key = 0
-      for (const i of this.state.number) {
+      for (const i of this.state.binNumber) {
         this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
         key++
       }
@@ -49,6 +53,8 @@ class App extends Component {
   }
 
   handleSquareClick(i) {
+
+    // getting corresponding square from the squareArray, switching its color and putting it back into the state
     let squareArray = this.state.squareArray
     let square = squareArray[i]
     square.props.color === "1" ? 
@@ -61,31 +67,33 @@ class App extends Component {
       squareArray: squareArray
     })
 
+    // changing binNumber in state as well, switching corresponding 0 to 1 or vice versa + changing corresponding decNumber in input
     let binNumber = this.state.number
     binNumber = binNumber.substr(0, i) + (binNumber[i] === "1" ? "0" : "1") + binNumber.substr(i + 1);
     let decNumber = BigInt('0b' + binNumber).toString(10)
-    console.log(binNumber, decNumber)
     this.setState({
       decNumber: decNumber,
-      number: binNumber
+      binNumber: binNumber
     })
 
-    console.log(this.state.squareArray.length - i - 1)
   }
 
   handleAddLineClick() {
+
+    // generating 16 0s in the binNumber in state and regenerating squareArray to create a new black line of squares
     let string16Zeros = new Array(16).fill("0").join('')
     this.setState({
-      number: string16Zeros + this.state.number,
+      binNumber: string16Zeros + this.state.binNumber,
     }, () => {
       this.state.squareArray = []
       let key = 0
-      for (const i of this.state.number) {
+      for (const i of this.state.binNumber) {
         this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
         key++
       }
-      this.setState({})
+      this.setState({}) // refresh
     })
+
   }
 
   render() {
