@@ -20,12 +20,17 @@ class Input extends Component {
               onChange={this.props.handleInputChange}
             ></input>
           </div>
-          <button className="removeline" onClick={this.props.handleRemoveLineClick}>
-            -
-          </button>
-          <button className="addline" onClick={this.props.handleAddLineClick}>
-            +
-          </button>
+          <div className='buttons-container'>
+            <button className="removeline" onClick={this.props.handleRemoveLineClick}>
+              -
+            </button>
+            <button className="addline" onClick={this.props.handleAddLineClick}>
+              +
+            </button>
+            <button className={`togglebitlines ${this.props.line === 'on' ? 'on' : 'off'}`} onClick={this.props.handleDisplayLineClick}>
+              |
+            </button>
+          </div>
           <button className="render" onClick={this.props.handleRenderClick}>
             render
           </button>

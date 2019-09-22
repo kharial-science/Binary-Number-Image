@@ -22,6 +22,10 @@ header {
     display: flex;
     box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
 
+    .buttons-container {
+        width: 12.5%;
+    }
+
     button {
 
         margin: 0;
@@ -42,13 +46,30 @@ header {
         }
 
         &.addline {
-            width: 6.25%;
+            height: 50%;
+            width: 50%;
             background-color: lightgreen;
         }
 
         &.removeline {
-            width: 6.25%;
+            width: 50%;
+            height: 50%;
             background-color: lightpink;
+        }
+
+        &.togglebitlines {
+            width: 100%;
+            height: 50%;
+            background-color: lightsalmon;
+            
+            &.on {
+                filter: brightness(140%) !important;
+            }
+
+            &:hover {
+                filter: brightness(120%);
+            }
+
         }
 
         &.render {
@@ -87,6 +108,32 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    position: relative;
+
+    .line {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        background-color: red;
+        opacity: 0;
+        transition: all .1s;
+
+        &.on {
+            opacity: 1;
+        }
+    }
+
+    #line1 {
+        right: 20vh;
+    }
+
+    #line2 {
+        right: 40vh;
+    }
+
+    #line3 {
+        right: 60vh;
+    }
 }
 
 #Square {

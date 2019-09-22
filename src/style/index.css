@@ -28,6 +28,10 @@ header {
           box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
 }
 
+#Input .buttons-container {
+  width: 12.5%;
+}
+
 #Input button {
   margin: 0;
   padding: 0;
@@ -50,13 +54,31 @@ header {
 }
 
 #Input button.addline {
-  width: 6.25%;
+  height: 50%;
+  width: 50%;
   background-color: lightgreen;
 }
 
 #Input button.removeline {
-  width: 6.25%;
+  width: 50%;
+  height: 50%;
   background-color: lightpink;
+}
+
+#Input button.togglebitlines {
+  width: 100%;
+  height: 50%;
+  background-color: lightsalmon;
+}
+
+#Input button.togglebitlines.on {
+  -webkit-filter: brightness(140%) !important;
+          filter: brightness(140%) !important;
+}
+
+#Input button.togglebitlines:hover {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
 }
 
 #Input button.render {
@@ -95,6 +117,33 @@ header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
+}
+
+#Display .line {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background-color: red;
+  opacity: 0;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+#Display .line.on {
+  opacity: 1;
+}
+
+#Display #line1 {
+  right: 20vh;
+}
+
+#Display #line2 {
+  right: 40vh;
+}
+
+#Display #line3 {
+  right: 60vh;
 }
 
 #Square {

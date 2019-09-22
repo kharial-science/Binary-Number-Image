@@ -13,18 +13,21 @@ class App extends Component {
     this.state = {
       decNumber: undefined,
       binNumber: new Array(16).fill('0').join(''),
+      line: 'off',
     }
     this.handleRenderClick = this.handleRenderClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSquareClick = this.handleSquareClick.bind(this)
     this.handleAddLineClick = this.handleAddLineClick.bind(this)
     this.handleRemoveLineClick = this.handleRemoveLineClick.bind(this)
+    this.handleDisplayLineClick = this.handleDisplayLineClick.bind(this)
   }
 
   handleRenderClick() {
 
     // retrieving bin number from input
-    let binNumber = BigInt(this.state.decNumber).toString(2)
+    let binNumber = '0'
+    if (this.state.decNumber) binNumber = BigInt(this.state.decNumber).toString(2)
 
     // adding 0s to fill the lines
     let binNumberLength = new Number(binNumber.length)
@@ -90,6 +93,18 @@ class App extends Component {
     
   }
 
+  handleDisplayLineClick() {
+    if(this.state.line === "off") {
+      this.setState({
+        line: "on"
+      })
+    } else {
+      this.setState({
+        line: "off"
+      })
+    }
+  }
+
   render() {
 
     let squareArray = []
@@ -111,8 +126,13 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           handleAddLineClick={this.handleAddLineClick}
           handleRemoveLineClick={this.handleRemoveLineClick}
+          handleDisplayLineClick={this.handleDisplayLineClick}
+          line={this.state.line}
         />
         <div id="Display">
+          <div id="line1" className={`line ${this.state.line}`}></div>
+          <div id="line2" className={`line ${this.state.line}`}></div>
+          <div id="line3" className={`line ${this.state.line}`}></div>
           {squareArray ? squareArray : <div></div>}
         </div>
       </div>
