@@ -6,7 +6,7 @@ class Input extends Component {
   
   render() {
 
-    let value = new String(this.props.value).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+    let value = new String(this.props.value).replace(/\B(?=(\d{3})+(?!\d))/g, " ") // add white space every 3 digits
 
     return (
       <div id="Input">

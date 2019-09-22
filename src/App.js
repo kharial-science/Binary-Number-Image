@@ -41,7 +41,7 @@ class App extends Component {
 
   handleInputChange(event) {
     this.setState({
-      decNumber: event.target.value.replace(/\s/g, '')
+      decNumber: event.target.value.replace(/\s/g, '') // remove all white spaces
     })
   }
 
