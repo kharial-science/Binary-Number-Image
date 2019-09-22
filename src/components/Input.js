@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 
 class Input extends Component {
+  
+  
+  
   render() {
+
+    let value = new String(this.props.value).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
     return (
       <div id="Input">
           <div className="input-container">
@@ -9,7 +15,7 @@ class Input extends Component {
               id="numberInput" 
               type="text" 
               placeholder="Entrez ici le nombre à convertir en binaire" 
-              value={this.props.value}
+              value={value}
               onChange={this.props.handleInputChange}
             ></input>
           </div>

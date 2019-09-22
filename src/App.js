@@ -24,7 +24,7 @@ class App extends Component {
   handleRenderClick() {
 
     // retrieving bin number from input
-    let binNumber = BigInt(document.getElementById('numberInput').value).toString(2)
+    let binNumber = BigInt(this.state.decNumber).toString(2)
 
     // adding 0s to fill the lines
     let binNumberLength = new Number(binNumber.length)
@@ -41,7 +41,7 @@ class App extends Component {
 
   handleInputChange(event) {
     this.setState({
-      decNumber: event.target.value
+      decNumber: event.target.value.replace(/\s/g, '')
     })
   }
 
