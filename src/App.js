@@ -99,7 +99,6 @@ class App extends Component {
       key++
     }
 
-
     return (
       <div id="App">
         <header>

@@ -12,7 +12,11 @@ class Square extends Component {
                 className={`color${this.props.color}`} 
                 onClick={() => {
                     this.props.onClick(this.props.identifier)
-                }}>
+                }}
+                onPointerLeave={(e) => {
+                    if(e.pressure > 0) this.props.onClick(this.props.identifier)
+                }}
+            >
                 {this.props.number}
             </div>
         )
