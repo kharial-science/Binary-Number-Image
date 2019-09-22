@@ -12,8 +12,7 @@ class App extends Component {
     super()
     this.state = {
       decNumber: undefined,
-      binNumber: null,
-      squareArray: []
+      binNumber: new Array(16).fill('0').join(''),
     }
     this.handleRenderClick = this.handleRenderClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -36,15 +35,8 @@ class App extends Component {
     // setting binNumber in state after retrieving and generating corresponding squareArray to display
     this.setState({ 
       binNumber: binNumber
-    }, () => {
-      this.state.squareArray = []
-      let key = 0
-      for (const i of this.state.binNumber) {
-        this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
-        key++
-      }
-      this.setState({}) //call this to re render after calculating squareArray
     })
+
   }
 
   handleInputChange(event) {
@@ -54,19 +46,6 @@ class App extends Component {
   }
 
   handleSquareClick(i) {
-
-    // getting corresponding square from the squareArray, switching its color and putting it back into the state
-    let squareArray = this.state.squareArray
-    let square = squareArray[i]
-    square.props.color === "1" ? 
-      square = <Square key={square.key} identifier={square.props.identifier} color={"0"} onClick={this.handleSquareClick}/>
-      :
-      square = <Square key={square.key} identifier={square.props.identifier} color={"1"} onClick={this.handleSquareClick}/>
-    squareArray[i] = square
-    console.log(squareArray)
-    this.setState({
-      squareArray: squareArray
-    })
 
     // changing binNumber in state as well, switching corresponding 0 to 1 or vice versa + changing corresponding decNumber in input
     let binNumber = this.state.binNumber
@@ -85,14 +64,6 @@ class App extends Component {
     let string16Zeros = new Array(16).fill("0").join('')
     this.setState({
       binNumber: string16Zeros + this.state.binNumber,
-    }, () => {
-      this.state.squareArray = []
-      let key = 0
-      for (const i of this.state.binNumber) {
-        this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
-        key++
-      }
-      this.setState({}) // refresh
     })
 
   }
@@ -100,24 +71,34 @@ class App extends Component {
   handleRemoveLineClick() {
 
     // deleting 16 first digits of binNumber and actualizing squareArray and decNumber
-    this.setState({
-      binNumber: this.state.binNumber.substr(16, this.state.binNumber.length),
-    }, () => {
-      this.state.squareArray = []
-      let key = 0
-      for (const i of this.state.binNumber) {
-        this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
-        key++
-      }
-      let decNumber = BigInt('0b' + this.state.binNumber).toString(10)
+    if (this.state.binNumber.length > 16) {
       this.setState({
-        decNumber: decNumber
-      }) // refresh
-    })
-
+        binNumber: this.state.binNumber.substr(16, this.state.binNumber.length),
+      }, () => {
+        this.state.squareArray = []
+        let key = 0
+        for (const i of this.state.binNumber) {
+          this.state.squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
+          key++
+        }
+        let decNumber = BigInt('0b' + this.state.binNumber).toString(10)
+        this.setState({
+          decNumber: decNumber
+        }) // refresh
+      })
+    }
+    
   }
 
   render() {
+
+    let squareArray = []
+    let key = 0
+    for (const i of this.state.binNumber) {
+      squareArray.push(<Square key={key} identifier={key} color={i} onClick={this.handleSquareClick}/>)
+      key++
+    }
+
 
     return (
       <div id="App">
@@ -133,7 +114,7 @@ class App extends Component {
           handleRemoveLineClick={this.handleRemoveLineClick}
         />
         <div id="Display">
-          {this.state.squareArray ? this.state.squareArray : <div></div>}
+          {squareArray ? squareArray : <div></div>}
         </div>
       </div>
     )
