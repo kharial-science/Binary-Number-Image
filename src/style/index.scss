@@ -1,0 +1,156 @@
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#App {
+    display: grid;
+    grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+    grid-template-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+}
+
+header {
+    grid-column: middle-start / middle-end;
+}
+
+#Input {
+    width: 80vh;
+    height: 100px;
+    grid-column: middle-start / middle-end;
+    grid-row: input-start / input-end;
+    display: flex;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+
+    .buttons-container {
+        width: 12.5%;
+    }
+
+    button {
+
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        border: none;
+        font-family: inherit;
+        font-size: 2.5vh;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        color: #fff;
+        transition: all 0.2s;
+
+        &:hover {
+            filter: brightness(110%);
+        }
+
+        &.addline {
+            height: 50%;
+            width: 50%;
+            background-color: lightgreen;
+        }
+
+        &.removeline {
+            width: 50%;
+            height: 50%;
+            background-color: lightpink;
+        }
+
+        &.togglebitlines {
+            width: 100%;
+            height: 50%;
+            background-color: lightsalmon;
+            
+            &.on {
+                filter: brightness(140%) !important;
+            }
+
+            &:hover {
+                filter: brightness(120%);
+            }
+
+        }
+
+        &.render {
+            width: 18.75%;
+            background-color: lightblue;
+        }
+
+    }
+
+    .input-container {
+
+        width: 68.75%;
+
+        input {
+            padding: 0 20px;
+            height: 100%;
+            width: 100%;
+            border: none;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+    }
+
+}
+
+#Display {
+    margin: 0 auto 0 0;
+    max-width: 80vh;
+    height: auto;
+    grid-column: middle-start / middle-end;
+    grid-row: display-start / display-end;
+    background-color: rgb(92, 92, 92);
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    position: relative;
+
+    .line {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        background-color: red;
+        opacity: 0;
+        transition: all .1s;
+
+        &.on {
+            opacity: 1;
+        }
+    }
+
+    #line1 {
+        right: 20vh;
+    }
+
+    #line2 {
+        right: 40vh;
+    }
+
+    #line3 {
+        right: 60vh;
+    }
+}
+
+#Square {
+    height: 5vh;
+    width: 5vh;
+    transition: all .1s;
+    cursor: pointer;
+
+    &.color0 {
+        background-color: black;
+    }
+
+    &.color1 {
+        background-color: white;
+    }
+
+    &:hover {
+        transform: scale(.8)
+    }
+}

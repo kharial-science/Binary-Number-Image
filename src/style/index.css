@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#App {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+      grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+  -ms-grid-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+      grid-template-rows: 130px [input-start] 100px [input-end] 10px [display-start] auto [display-end];
+}
+
+header {
+  grid-column: middle-start / middle-end;
+}
+
+#Input {
+  width: 80vh;
+  height: 100px;
+  grid-column: middle-start / middle-end;
+  grid-row: input-start / input-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+}
+
+#Input .buttons-container {
+  width: 12.5%;
+}
+
+#Input button {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 2.5vh;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #fff;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+#Input button:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+#Input button.addline {
+  height: 50%;
+  width: 50%;
+  background-color: lightgreen;
+}
+
+#Input button.removeline {
+  width: 50%;
+  height: 50%;
+  background-color: lightpink;
+}
+
+#Input button.togglebitlines {
+  width: 100%;
+  height: 50%;
+  background-color: lightsalmon;
+}
+
+#Input button.togglebitlines.on {
+  -webkit-filter: brightness(140%) !important;
+          filter: brightness(140%) !important;
+}
+
+#Input button.togglebitlines:hover {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+#Input button.render {
+  width: 18.75%;
+  background-color: lightblue;
+}
+
+#Input .input-container {
+  width: 68.75%;
+}
+
+#Input .input-container input {
+  padding: 0 20px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#Display {
+  margin: 0 auto 0 0;
+  max-width: 80vh;
+  height: auto;
+  grid-column: middle-start / middle-end;
+  grid-row: display-start / display-end;
+  background-color: #5c5c5c;
+  -webkit-box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.25);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+}
+
+#Display .line {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background-color: red;
+  opacity: 0;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+#Display .line.on {
+  opacity: 1;
+}
+
+#Display #line1 {
+  right: 20vh;
+}
+
+#Display #line2 {
+  right: 40vh;
+}
+
+#Display #line3 {
+  right: 60vh;
+}
+
+#Square {
+  height: 5vh;
+  width: 5vh;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+  cursor: pointer;
+}
+
+#Square.color0 {
+  background-color: black;
+}
+
+#Square.color1 {
+  background-color: white;
+}
+
+#Square:hover {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+/*# sourceMappingURL=index.css.map */
