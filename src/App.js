@@ -117,8 +117,8 @@ class App extends Component {
     return (
       <div id="App">
         <header>
-          <h1>Hello World !</h1>
-          <p>Here is the kfs number binary image converter</p>
+          <h1>Binary Number Image</h1>
+          <p>Kharoh Family Science Binary Number Image Convertor : convert any number to its binary image correspondance.</p>
         </header>
         <Input 
           handleRenderClick={this.handleRenderClick} 
